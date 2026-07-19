@@ -1,5 +1,10 @@
 # GDD Space Invaders Project Starter
 
+## Team Members
+- Chaw Yadanar Oo
+- Min Khant Aung
+
+
 This is a starting codebase for GDD Project.
 
 ## References
