@@ -26,7 +26,7 @@ import javax.swing.Timer;
  */
 public class TitleScene extends JPanel {
 
-    private static final String TITLE = "STAR VIPER";
+    private static final String TITLE = "STAR BLASTER";
     private static final String SUBTITLE = "G D D   P R O J E C T";
     private static final String[] TEAM = {"Chaw Yadanar Oo - 6632782 ", "Min Khant Aung- 6632753"};
 
