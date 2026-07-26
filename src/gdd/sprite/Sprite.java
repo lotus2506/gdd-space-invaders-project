@@ -6,27 +6,56 @@ abstract public class Sprite {
 
     protected boolean visible;
     protected Image image;
+    protected Animation animation;
     protected boolean dying;
     protected int visibleFrames = 10;
 
     protected int x;
     protected int y;
     protected int dx;
+    protected int dy;
 
     public Sprite() {
         visible = true;
     }
 
-    abstract public void act();
+    // Default behaviour is just to advance the animation. Sprites that also move
+    // (Player, Enemy, Shot, PowerUp) override this and call super.act().
+    public void act() {
+        if (animation != null) {
+            animation.update();
+        }
+    }
+
+    public void setAnimation(Animation animation) {
+        this.animation = animation;
+    }
+
+    public Animation getAnimation() {
+        return animation;
+    }
+
+    public int getWidth() {
+        Image img = getImage();
+        return img == null ? 0 : img.getWidth(null);
+    }
+
+    public int getHeight() {
+        Image img = getImage();
+        return img == null ? 0 : img.getHeight(null);
+    }
 
     public boolean collidesWith(Sprite other) {
         if (other == null || !this.isVisible() || !other.isVisible()) {
             return false;
         }
-        return this.getX() < other.getX() + other.getImage().getWidth(null)
-                && this.getX() + this.getImage().getWidth(null) > other.getX()
-                && this.getY() < other.getY() + other.getImage().getHeight(null)
-                && this.getY() + this.getImage().getHeight(null) > other.getY();
+        if (this.getImage() == null || other.getImage() == null) {
+            return false;
+        }
+        return this.getX() < other.getX() + other.getWidth()
+                && this.getX() + this.getWidth() > other.getX()
+                && this.getY() < other.getY() + other.getHeight()
+                && this.getY() + this.getHeight() > other.getY();
     }
 
     public void die() {
@@ -54,6 +83,9 @@ abstract public class Sprite {
     }
 
     public Image getImage() {
+        if (animation != null && animation.getFrame() != null) {
+            return animation.getFrame();
+        }
         return image;
     }
 
