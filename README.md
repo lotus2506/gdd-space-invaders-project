@@ -1,51 +1,88 @@
-# STAR VIPER — GDD Space Invaders Project
+# STAR BLASTER — GDD Space Invaders Project
 
-A side-scrolling shooter (Life Force / Salamander style) extended from the
-`mchayapol/gdd-space-invaders-project` starter.
+STAR Blaster is a side-scrolling arcade shooter inspired by Life Force / Salamander, developed by extending the provided GDD Space Invaders Project template. The game features two playable stages, animated sprites, power-ups, multiple enemy types, and a final boss battle.
 
 ## Team Members
 - Chaw Yadanar Oo - 6632782
 - Min Khant Aung - 6632753
 
+## Project Requirements
+This project satisfies the assignment requirements:
+Side-scrolling shooter (horizontal)
+Extended from the provided mchayapol/gdd-space-invaders-project
+Original gameplay additions while preserving the original codebase structure
+Two playable stages
+Boss fight in the final stage
+Two enemy types
+Animated sprites
+Speed Up and Multi-Shot power-ups
+Dashboard displaying player status
+
 ## How to run
 
-Needs a JDK (`brew install --cask temurin` if you don't have one). From the
-project root:
+#Requirements
 
-```
+Java Development Kit (JDK 17 or later)
+#Run
+From the project root directory:
 ./run.sh
-```
 
-It compiles `src/` into `build/` and launches `gdd.Main`. Must be run from the
-project root — image, audio and stage paths are relative to the working directory.
+The script compiles the source code into the build/ directory and launches:
+  gdd.Main
+Important: Run the game from the project root so all image, audio, and stage resources can be loaded correctly.
 
 ## Controls
-- **Arrow keys** — move
-- **Space** — fire (also starts the game / returns to title)
+Key	            |Action
+← ↑ ↓ →         |	Move the player
+Space	          |Shoot / Start Game / Return to Title
 
 ## Gameplay
-- **Two stages**, each scrolling for over 5 minutes (18,600 frames at 60fps).
-  Stage 1 (Outer Belt) hands over to Stage 2 (The Core), which ends in a boss fight.
-- **Two enemy types**: a weaving drifter (Alien1) and a faster, shooting
-  interceptor (Alien2). The Stage 2 boss has two attack phases.
-- **Power-ups**: Speed Up (2 steps) and Multi-Shot (4 steps, up to a four-way spread).
-- **Dashboard** across the top: score, lives, speed/shot meters, stage progress
-  and a boss health bar.
-- All sprites are animated — the player ship and shots are clipped from the sprite
-  sheet, enemies/boss/power-ups/explosions are drawn frame-by-frame.
+Stage 1 – Outer Belt
+-Enemy waves
+-Animated obstacles
+-Speed Up power-ups
+-Multi-Shot upgrades
+Stage 2 – The Core
+-More challenging enemies
+-Increased difficulty
+-Final boss battle with multiple attack phases
 
+- **Power-ups**:
+  Speed Up
+     ~2 upgrade levels
+     ~Increases player movement speed
+  Multi-Shot
+     ~4 upgrade levels
+     ~Expands the player's firing pattern up to four simultaneous shots
+  
+- **Dashboard** The in-game dashboard displays:
+*Score
+*Remaining Lives
+*Current Speed Level
+*Shot Upgrade Level
+*Stage Progress
+*Boss Health Bar (Stage 2)
 ## Stage data
-Spawn tables live in `src/data/stage1.csv` and `stage2.csv` as `frame,type,x,y`
-rows, parsed by `gdd.StageLoader`. Edit the CSVs to retune the waves — no
-recompile needed.
+
+Enemy spawn data is stored in:
+    -src/data/stage1.csv
+    -src/data/stage2.csv
+Each row follows the format:
+    -frame,type,x,y
+The files are loaded by gdd.StageLoader, allowing enemy waves to be modified without changing the game code.
 
 ## Debug hotkeys
-Set `Global.DEBUG = true`, then in a stage: `9` skips ahead 3000 frames, `0`
-jumps to the end of the stage, `B` (Stage 2) skips to the boss.
+Enable debugging by setting:
+Global.DEBUG = true;
+Available debug shortcuts:
+Key	Function
+9	Skip ahead 3000 frames
+0	Jump near the end of the stage
+B	Skip directly to the boss (Stage 2 only)
+Credits
+This project was developed by extending the provided GDD Space Invaders Project starter code for educational purposes.
+Game inspiration:
+Life Force / Salamander (Konami)
+Sprite resources:
+The Spriters Resource (Life Force / Salamander sprite sheets)
 
-## References
-- Based on the [Java Space Invaders](git@github.com:Swanyiwinthuya/gdd-project-1.git) starter.
-- Player ship frames clipped from the NES *Life Force / Salamander* Vic Viper
-  sprite sheet (ripped assets from The Spriters Resource), included as
-  `src/images/spites.png`.
-s
